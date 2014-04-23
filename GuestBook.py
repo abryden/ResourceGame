@@ -72,10 +72,12 @@ class MainPage(webapp2.RequestHandler):
             if greeting.author:
                 self.response.write(
                         '<b>%s</b> wrote:' % greeting.author.nickname())
-            else:
-                self.response.write('An anonymous person wrote:')
-            self.response.write('<blockquote>%s</blockquote>' %
+                self.response.write('<blockquote>%s</blockquote>' %
                                 cgi.escape(greeting.content))
+            #else:
+            #    self.response.write('An anonymous person wrote:')
+           	# 	self.response.write('<blockquote>%s</blockquote>' %
+            #                    cgi.escape(greeting.content))	
 
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)
