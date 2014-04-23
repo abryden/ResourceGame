@@ -67,13 +67,14 @@ class MainPage(webapp2.RequestHandler):
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
         greetings = greetings_query.fetch(10)
 
-
+        self.response.write('<table style=\"width:700px\"');
         for greeting in greetings:
             if greeting.author:
                 self.response.write(
-                        '<b>%s</b> wrote:' % greeting.author.nickname())
-                self.response.write('<blockquote>%s</blockquote>' %
+                        '<tr> <td>%s</td> ' % greeting.author.nickname())
+                self.response.write('<td>%s</td></tr>' %
                                 cgi.escape(greeting.content))
+        self.response.write('</table>')
             #else:
             #    self.response.write('An anonymous person wrote:')
            	# 	self.response.write('<blockquote>%s</blockquote>' %
