@@ -65,7 +65,7 @@ class MainPage(webapp2.RequestHandler):
 
         greetings_query = Greeting.query(
             ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
-        greetings = greetings_query.fetch(10)
+        greetings = greetings_query.fetch(30)
 
         self.response.write('<table style=\"width:700px\"');
         for greeting in greetings:
